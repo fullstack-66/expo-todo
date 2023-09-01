@@ -1,6 +1,5 @@
 import { Stack } from "expo-router";
 import { COLORS, FONT } from "../../constants/theme";
-import { Text } from "react-native";
 export default function TodoLayout() {
   return (
     <Stack

@@ -1,21 +1,11 @@
 import { useState, useEffect } from "react";
-import {
-  Text,
-  TextInput,
-  View,
-  SafeAreaView,
-  StyleSheet,
-  TouchableOpacity,
-  FlatList,
-  ListRenderItemInfo,
-} from "react-native";
-import { COLORS, FONT } from "../../constants/theme";
+import { View, StyleSheet } from "react-native";
 import axios from "axios";
-import { type Todo } from "../../components/TodoItem";
-import TodoItem from "../../components/TodoItem";
-
+import { type Todo } from "../../utils/types";
+import TodoList from "../../components/TodoList";
+import TodoForm from "../../components/TodoForm";
 export default function Todo() {
-  const [todo, setTodo] = useState("");
+  const [txt, setTxt] = useState("");
   const [todos, setTodos] = useState<Todo[]>([]);
 
   useEffect(() => {
@@ -29,32 +19,11 @@ export default function Todo() {
       });
   }, []);
 
-  const renderTodo = ({ item }: ListRenderItemInfo<Todo>) => (
-    <Text>{item.id}</Text>
-  );
-
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <Text style={styles.textTitle}>New Todo</Text>
-        <TextInput
-          value={todo}
-          onChangeText={(t) => setTodo(t)}
-          placeholder={"Todo"}
-          style={styles.input}
-        />
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.textBtn}>Add</Text>
-        </TouchableOpacity>
-        <Text style={{ color: "blue" }}>{todo}</Text>
-
-        <FlatList
-          data={todos}
-          renderItem={renderTodo}
-          keyExtractor={(todo: Todo) => todo.id.toString()}
-        />
-      </View>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <TodoForm txt={txt} setTxt={setTxt} />
+      <TodoList todos={todos} />
+    </View>
   );
 }
 
@@ -64,28 +33,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 20,
     backgroundColor: "#ffffff",
-  },
-  input: {
-    width: 250,
-    height: 44,
-    padding: 10,
-    borderRadius: 4,
-    backgroundColor: "#e8e8e8",
-  },
-  button: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 6,
-    paddingHorizontal: 16,
-    borderRadius: 4,
-    backgroundColor: COLORS.primary,
-  },
-  textBtn: {
-    fontFamily: FONT.regular,
-    color: COLORS.lightWhite,
-  },
-  textTitle: {
-    fontFamily: FONT.bold,
-    color: COLORS.primary,
+    gap: 20,
   },
 });

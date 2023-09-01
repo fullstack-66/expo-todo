@@ -4,7 +4,7 @@ const COLORS = {
     tertiary: "#45d1f4",
   
     gray: "#83829A",
-    gray2: "#C1C0C8",
+    gray2: "#BEBEBE",
   
     white: "#F3F4F8",
     lightWhite: "#FAFAFC",
