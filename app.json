@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.nnnpooh.expotodo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -29,6 +30,14 @@
     "plugins": [
       "expo-router"
     ],
-    "scheme": "my-app-scheme"
+    "scheme": "my-app-scheme",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "cf221438-290c-459c-b480-3dc6e8b1dd59"
+      }
+    }
   }
 }
