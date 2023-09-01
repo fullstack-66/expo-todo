@@ -1,5 +1,5 @@
 import { Stack } from "expo-router";
-import { COLORS } from "../../constants/theme";
+import { COLORS, FONT } from "../../constants/theme";
 import { Text } from "react-native";
 export default function TodoLayout() {
   return (
@@ -10,14 +10,21 @@ export default function TodoLayout() {
         },
         headerTintColor: COLORS.lightWhite,
         headerTitleStyle: {
-          fontWeight: "400",
+          fontFamily: FONT.regular,
+          fontSize: 15,
         },
       }}
     >
       <Stack.Screen
         name="index"
         options={{
-          title: "My Todos",
+          title: "| My Todos",
+        }}
+      />
+      <Stack.Screen
+        name="about"
+        options={{
+          title: "| About",
         }}
       />
     </Stack>
