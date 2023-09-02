@@ -12,9 +12,10 @@ import { COLORS, FONT } from "../constants/theme";
 interface Props {
   txt: string;
   setTxt: (txt: string) => void;
+  addTodo: (txt: string) => void;
 }
 
-const TodoForm: FC<Props> = ({ txt, setTxt }) => {
+const TodoForm: FC<Props> = ({ txt, setTxt, addTodo }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.textTitle}>New Todo</Text>
@@ -25,7 +26,12 @@ const TodoForm: FC<Props> = ({ txt, setTxt }) => {
           placeholder={"Todo"}
           style={styles.input}
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            addTodo(txt);
+          }}
+        >
           <Ionicons name="add" size={32} color={COLORS.lightWhite} />
         </TouchableOpacity>
       </View>
