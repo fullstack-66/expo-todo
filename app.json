@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.fullstack66.expotodo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -29,6 +30,21 @@
     "plugins": [
       "expo-router"
     ],
-    "scheme": "my-app-scheme"
+    "scheme": "my-app-scheme",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "d520b50d-d0eb-4560-b825-d54500382618"
+      }
+    },
+    "owner": "fullstack-66",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/d520b50d-d0eb-4560-b825-d54500382618"
+    }
   }
 }

@@ -8,11 +8,28 @@ export default function Todo() {
   const [txt, setTxt] = useState("");
   const [todos, setTodos] = useState<Todo[]>([]);
 
+  function deleteTodo(id: number) {
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
+  }
+
+  function addTodo(txt: string) {
+    if (!txt) return;
+    const newTodo: Todo = {
+      id: Math.max(...todos.map((todo) => todo.id)) + 1,
+      title: txt,
+      userId: 1,
+      completed: false,
+    };
+    setTodos([newTodo, ...todos]);
+    setTxt("");
+  }
+
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/todos")
       .then((res) => {
-        setTodos(res.data);
+        setTodos(res.data.slice(0, 10));
       })
       .catch((err) => {
         console.log(err);
@@ -21,8 +38,8 @@ export default function Todo() {
 
   return (
     <View style={styles.container}>
-      <TodoForm txt={txt} setTxt={setTxt} />
-      <TodoList todos={todos} />
+      <TodoForm txt={txt} setTxt={setTxt} addTodo={addTodo} />
+      <TodoList {...{ todos, addTodo, deleteTodo }} />
     </View>
   );
 }
