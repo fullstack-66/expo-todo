@@ -16,7 +16,7 @@ export default function Todo() {
   function addTodo(txt: string) {
     if (!txt) return;
     const newTodo: Todo = {
-      id: Math.max(...todos.map((todo) => todo.id)) + 1,
+      id: todos.length > 0 ? Math.max(...todos.map((todo) => todo.id)) + 1 : 1,
       title: txt,
       userId: 1,
       completed: false,
