@@ -6,7 +6,7 @@
       "channel": "development"
     },
     "preview": {
-      "channel": "staging",
+      "channel": "preview",
       "distribution": "internal"
     },
     "production": {
